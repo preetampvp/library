@@ -1,0 +1,24 @@
+db.books.drop();
+
+let books = [
+  {
+    title: "A good book",
+    description: "this is a description",
+    isbn: "1232323",
+    categories: ["funny"],
+    authors: ["Arthur Dent"],
+    createdAt: Date.now(),
+    updatedAt: Date.now()
+  },
+  {
+    title: "Something else",
+    description: "this is a description",
+    isbn: "889898989",
+    categories: ["drama"],
+    authors: ["Bob Marley"],
+    createdAt: Date.now(),
+    updatedAt: Date.now()
+  },
+]
+
+db.books.insert(books)

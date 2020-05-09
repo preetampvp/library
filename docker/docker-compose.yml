@@ -1,0 +1,32 @@
+version: "3.2"
+services:
+  server:
+    build:
+      context: ../server
+      dockerfile: Dockerfile
+    image: lib-server
+    container_name: lib-server
+    ports:
+      - "8080:8080"
+    volumes:
+      - ../server/:/usr/src
+    environment:
+      - DATABASE_CONNECTION_STRING=mongodb://db:27017/Library
+      - PORT=8080
+    restart: always
+    entrypoint:
+      - npm
+      - run
+      - start:dev
+    depends_on:
+      - db
+
+  db:
+    build:
+      context: .
+      dockerfile: Dockerfile.mongo
+    image: lib-db
+    container_name: lib-db
+    restart: always
+    ports:
+      - "27017:27107"
