@@ -2,6 +2,7 @@ import cookieParser from "cookie-parser";
 import morgan from "morgan";
 import helmet from "helmet";
 import mongoose from "mongoose";
+import cors from "cors";
 
 import express, { Request, Response, NextFunction, Express } from "express";
 import { BAD_REQUEST } from "http-status-codes";
@@ -20,6 +21,7 @@ const getServer = async () => {
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
   app.use(cookieParser());
+  app.use(cors());
   app.use(morgan("dev"));
   app.use(helmet());
 

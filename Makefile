@@ -14,3 +14,7 @@ clean-img:
 db-seed:
 	docker cp seed.db $(libDb):/seed.js
 	docker exec -it $(libDb) mongo mongodb://localhost:27017/Library /seed.js
+
+.PHONY: client
+client:
+	(cd ./client && npm run start)
